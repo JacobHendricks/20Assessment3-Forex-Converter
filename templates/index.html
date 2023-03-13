@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/app.css">
+  <title>Forex Converter</title>
+</head>
+<body>
+  <H1>Currency Converter</H1>
+
+  <form action="/convert" method="POST" class="currency">
+    <label for="conv-from">From Currency </label>
+    <input type="text" name="conv-from" id="conv-from" value="USD"><br><br>
+    <label for="conv-to">To Currency </label>
+    <input type="text" name="conv-to" id="conv-to" value="EUR"><br><br>
+    <label for="amount">Amount </label>
+    <input name="amount" id="amount" value="1"><br><br>
+    <button>Convert</button>
+  </form>
+
+
+</body>
+</html>

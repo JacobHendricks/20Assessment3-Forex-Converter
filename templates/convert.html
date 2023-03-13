@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/app.css">
+  <title>Forex Converter</title>
+</head>
+<body>
+  <H1>Currency Converter</H1>
+
+  <form action="/convert" method="POST" class="currency">
+    <label for="conv-from">From Currency </label>
+    <input type="text" name="conv-from" id="conv-from" value="{{from_curr}}"><br><br>
+    <label for="conv-to">To Currency </label>
+    <input type="text" name="conv-to" id="conv-to" value="{{to_curr}}"><br><br>
+    <label for="amount">Amount </label>
+    <input name="amount" id="amount" value="{{amount}}"><br><br>
+    <button>Convert</button>
+  </form>
+
+  <p class="result"> 
+    Converted Amount = {{result}}
+  </p>
+
+  <section class="messages">
+    {% for category,msg in get_flashed_messages(with_categories=true) %} 
+    <p class="{{category}}">{{ msg }}</p>
+    {% endfor %}
+  </section>
+
+
+</body>
+</html>
