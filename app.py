@@ -38,17 +38,24 @@ def submit_form():
 
     symbols = get_symbols()
 
+    errors = []
+
     if len(conv_from) != 3 or len(conv_to) != 3:
-        flash("Currency code should be 3 letters (e.g. USD, EUR)", 'error')
-    elif conv_from not in symbols:
-        flash(f"Not a valid From Currency: {conv_from}", 'error')
-    elif conv_to not in symbols:
-        flash(f"Not a valid To Currency: {conv_to}", 'error')
-    elif amount.isnumeric() is False:
-        flash("Amount should be a number", 'error')
+        errors.append("Currency code should be 3 letters (e.g. USD, EUR)")
+    if conv_from not in symbols:
+        errors.append(f"Not a valid From Currency: {conv_from}")
+    if conv_to not in symbols:
+        errors.append(f"Not a valid To Currency: {conv_to}")
+    if amount.isnumeric() is False:
+        errors.append("Amount should be a number")
+
+    if len(errors) > 0:
+        for e in errors:
+            flash(e, 'error')
     else:
         converted_amount["result"] = convert(conv_from, conv_to, amount)
         converted_amount["from"] = conv_from
         converted_amount["to"] = conv_to
         converted_amount["amt"] = amount
+
     return redirect("/result")
